@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="my-4"><%= @flat.name %></h1>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title"><%= @flat.name %></h5>
+      <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= @flat.address %></p>
+      <p class="card-text"><%= @flat.description %></p>
+      <p class="card-text"><strong>Price per night:</strong> £<%= @flat.price_per_night %></p>
+      <p class="card-text"><strong>Number of guests:</strong> <%= @flat.number_of_guests %></p>
+    </div>
+  </div>
+
+  <%= form_tag '', method: :get, class: "row g-3" do %>
+    <div class="col-md-6">
+      <%= label_tag 'Check-in Date', nil, class: 'form-label' %>
+      <%= date_field_tag 'check_in_date', nil, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= label_tag 'Check-out Date', nil, class: 'form-label' %>
+      <%= date_field_tag 'check_out_date', nil, class: 'form-control' %>
+    </div>
+    <div class="col-12">
+      <%= submit_tag 'Check Availability', class: 'btn btn-primary' %>
+      <%= link_to 'Delete', @flat, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+</div>
